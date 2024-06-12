@@ -1,0 +1,11 @@
+package page
+
+import(
+    "github.com/ryansheehan/go-todo/internal/view/layout"
+)
+
+templ Home(name string){
+        @layout.Base(){
+            <p>Hello from templ { name }</p>
+        }
+}
