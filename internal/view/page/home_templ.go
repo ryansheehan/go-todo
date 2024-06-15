@@ -11,10 +11,12 @@ import "io"
 import "bytes"
 
 import (
+	"github.com/ryansheehan/go-todo/internal/model"
+	"github.com/ryansheehan/go-todo/internal/view/count"
 	"github.com/ryansheehan/go-todo/internal/view/layout"
 )
 
-func Home(name string) templ.Component {
+func Home(state *shared.AppState) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -38,15 +40,19 @@ func Home(name string) templ.Component {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var3 string
-			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(name)
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs((*state).Name)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/view/page/home.templ`, Line: 9, Col: 38}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `internal/view/page/home.templ`, Line: 11, Col: 43}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("</p>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = count.Count((*state).Count).Render(ctx, templ_7745c5c3_Buffer)
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

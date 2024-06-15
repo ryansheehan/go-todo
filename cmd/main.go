@@ -11,9 +11,12 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
+
+	shared "github.com/ryansheehan/go-todo/internal/model"
 )
 
 type application struct {
+	state shared.AppState
 }
 
 func main() {
@@ -24,7 +27,10 @@ func main() {
 	port := flag.String("port", "4000", "port for app")
 	flag.Parse()
 
-	app := &application{}
+	app := &application{
+		state: *shared.InitAppState(3, "Ryan Sheehan"),
+	}
+
 	//--------------------------
 	//middleware provided by echo
 	//--------------------------
@@ -47,8 +53,10 @@ func main() {
 		CustomTimeFormat: "2006-01-02 15:04:05.00000",
 	}))
 
-	//routes
+	//static
+	esrv.Static("/static", "static")
 
+	//routes
 	esrv.GET("/", app.home)
 
 	//graceful shutdown

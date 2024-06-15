@@ -1,11 +1,14 @@
 package page
 
-import(
+import(  
+    "github.com/ryansheehan/go-todo/internal/model"
     "github.com/ryansheehan/go-todo/internal/view/layout"
+    "github.com/ryansheehan/go-todo/internal/view/count"
 )
 
-templ Home(name string){
-        @layout.Base(){
-            <p>Hello from templ { name }</p>
-        }
+templ Home(state *shared.AppState){
+    @layout.Base(){
+        <p>Hello from templ { (*state).Name }</p>
+        @count.Count((*state).Count){}
+    }
 }

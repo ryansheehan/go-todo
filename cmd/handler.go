@@ -8,6 +8,5 @@ import (
 )
 
 func (app *application) home(c echo.Context) error {
-	return render(c, http.StatusOK, page.Home("Sam Smith"))
-
+	return render(c, http.StatusOK, page.Home(&app.state))
 }

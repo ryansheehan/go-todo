@@ -1,0 +1,10 @@
+package count
+
+import "strconv"
+
+templ Count(n uint64) {
+    <div>
+        <p>Count: {strconv.FormatUint(n, 10)}</p>
+        <button>Increment</button>
+    </div>
+}
