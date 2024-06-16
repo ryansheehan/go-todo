@@ -13,7 +13,7 @@ export default defineConfig({
         },
         outDir: "static",
         emptyOutDir: true,
-        watch: {
+        watch: {            
             include: ["web/**"]
         },
     },

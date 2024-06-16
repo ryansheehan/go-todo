@@ -8,3 +8,5 @@ declare global {
 }
 
 window.htmx = htmx;
+
+console.log('hello world!')

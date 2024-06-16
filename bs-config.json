@@ -1,0 +1,9 @@
+
+{
+    "files": [
+        "web/**/*.*",        
+        "internal/view/**/*_templ.go"
+    ],
+    "reloadDelay": 1000,
+    "reloadDebounce": 500
+}
