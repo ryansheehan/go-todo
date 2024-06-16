@@ -1,9 +1,5 @@
 package layout
 
-func findScripts() []string {
-	return make([]string, 0)
-}
-
 templ Base() {
 	<!DOCTYPE html>
 	<html lang="en">
@@ -11,10 +7,8 @@ templ Base() {
 			<meta charset="UTF-8"/>
 			<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 			<meta http-equiv="X-UA-Compatible" content="ie=edg"/>
-			// <script src="/public/htmx.min.js"></script>
-			for _, src := range scripts {
-				<script src={src}></script>
-			}
+			<link href="/static/style.css" rel="stylesheet" />
+			<script src="/static/main.js" type="text/javascript"></script>
 		</head>
 		<body>
 			{ children... }

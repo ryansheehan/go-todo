@@ -16,7 +16,8 @@ import (
 )
 
 type application struct {
-	state shared.AppState
+	state   shared.AppState
+	scripts []string
 }
 
 func main() {
@@ -28,7 +29,8 @@ func main() {
 	flag.Parse()
 
 	app := &application{
-		state: *shared.InitAppState(2, "Ryan S"),
+		state:   *shared.InitAppState(2, "Ryan S"),
+		scripts: make([]string, 0),
 	}
 
 	//--------------------------
@@ -55,7 +57,7 @@ func main() {
 
 	//static
 	esrv.Static("/public", "public")
-	esrv.Static("/assets", "assets")
+	esrv.Static("/static", "static")
 
 	//routes
 	esrv.GET("/", app.home)

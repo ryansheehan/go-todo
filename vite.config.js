@@ -1,12 +1,20 @@
-/** @type {import('vite').UserConfig} */
-export default {
+import { resolve } from 'path';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
     cacheDir: "tmp/web",
+    publicDir: "assets",
     build: {
-        outDir: "public",
-        rollupOptions: {
-            input: {
-                main: './web/main.ts'
-            }
-        }
-    }
-}
+        lib: {
+            entry: [resolve(__dirname, "web/main.ts")],
+            formats: ["es"],
+            name: "[name]",
+            fileName: "[name]",
+        },
+        outDir: "static",
+        emptyOutDir: true,
+        watch: {
+            include: ["web/**"]
+        },
+    },
+});

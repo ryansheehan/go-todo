@@ -23,5 +23,5 @@ go.work
 *_templ.go
 
 # client side folders
-/public/
+/static/
 node_modules/
