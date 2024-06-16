@@ -18,3 +18,10 @@ tmp/
 
 # Go workspace file
 go.work
+
+# templ generated files
+*.*_templ.go
+
+# client side folders
+/public/
+node_modules/

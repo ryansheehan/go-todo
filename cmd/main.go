@@ -55,6 +55,7 @@ func main() {
 
 	//static
 	esrv.Static("/public", "public")
+	esrv.Static("/assets", "assets")
 
 	//routes
 	esrv.GET("/", app.home)
