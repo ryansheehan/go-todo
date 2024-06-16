@@ -5,9 +5,9 @@ tmp_dir = "tmp"
 [build]
   args_bin = []
   bin = "./tmp/main"
-  cmd = "make build_dev"
-  delay = 1000
-  exclude_dir = ["assets", "tmp", "vendor", "testdata"]
+  cmd = "make all"
+  delay = 300
+  exclude_dir = ["assets", "tmp", "vendor", "testdata", "web"]
   exclude_file = []
   exclude_regex = ["_test.go",".*_templ.go","app.js", ".*tmp"]
   exclude_unchanged = false
@@ -41,10 +41,10 @@ tmp_dir = "tmp"
 [misc]
   clean_on_exit = false
 
-[proxy]
-  app_port = 4000
-  enabled = true
-  proxy_port = 5000
+# [proxy]
+#   enabled = false
+#   app_port = 4000
+#   proxy_port = 5000
 
 [screen]
   clear_on_rebuild = false

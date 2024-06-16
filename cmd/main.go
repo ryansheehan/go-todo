@@ -28,7 +28,7 @@ func main() {
 	flag.Parse()
 
 	app := &application{
-		state: *shared.InitAppState(3, "Ryan Sheehan"),
+		state: *shared.InitAppState(2, "Ryan S"),
 	}
 
 	//--------------------------
@@ -54,10 +54,11 @@ func main() {
 	}))
 
 	//static
-	esrv.Static("/static", "static")
+	esrv.Static("/public", "public")
 
 	//routes
 	esrv.GET("/", app.home)
+	esrv.POST("/count/increment", app.incrementCount)
 
 	//graceful shutdown
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)

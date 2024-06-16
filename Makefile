@@ -1,12 +1,11 @@
-.PHONY: all run build_dev build_template
+.PHONY: all run build build_dev build_template
 
-all: build_dev run
+all: build_template build_dev
 
 build_template:
 	@templ generate
 
-build_dev:
-	@templ generate
+build_dev:	
 	go build -o ./tmp/main ./cmd/...
 
 run:
