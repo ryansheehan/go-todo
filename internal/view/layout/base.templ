@@ -1,6 +1,10 @@
 package layout
 
-templ Base(scripts []string) {
+func findScripts() []string {
+	return make([]string, 0)
+}
+
+templ Base() {
 	<!DOCTYPE html>
 	<html lang="en">
 		<head>
