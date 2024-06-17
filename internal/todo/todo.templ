@@ -1,0 +1,19 @@
+package todo
+
+import (
+    "github.com/ryansheehan/go-todo/internal/shared/layouts"
+)
+
+templ TodoForm(todo *Todo) {
+    <form class="todo-form" hx-post="/todo/create">
+        <label for="todo-input">Todo</label>
+        <input id="todo-input" name="todo" required/>
+        <button type="submit">Add</button>
+    </form>
+}
+
+templ Home(todos []Todo) {
+    @layout.Base() {
+        <div>Todos go here</div>
+    }
+}

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "run-p watch:* air browser-sync:start",
+    "dev": "run-p watch:* air",
     "watch:vite": "vite build --watch=true",
     "watch:tsc": "tsc --watch --noEmit",
     "build:vite": "vite build --watch=false",

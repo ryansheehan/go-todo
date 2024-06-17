@@ -12,13 +12,8 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 	"github.com/labstack/gommon/log"
 
-	shared "github.com/ryansheehan/go-todo/internal/model"
+	"github.com/ryansheehan/go-todo/internal/todo"
 )
-
-type application struct {
-	state   shared.AppState
-	scripts []string
-}
 
 func main() {
 	esrv := echo.New()
@@ -27,11 +22,6 @@ func main() {
 	//flag parsing
 	port := flag.String("port", "4000", "port for app")
 	flag.Parse()
-
-	app := &application{
-		state:   *shared.InitAppState(2, "Ryan S"),
-		scripts: make([]string, 0),
-	}
 
 	//--------------------------
 	//middleware provided by echo
@@ -59,9 +49,11 @@ func main() {
 	esrv.Static("/public", "public")
 	esrv.Static("/static", "static")
 
-	//routes
-	esrv.GET("/", app.home)
-	esrv.POST("/count/increment", app.incrementCount)
+	//init app modules
+	todoModule := todo.NewTodoModule()
+
+	//mount module routes
+	todoModule.Mount(esrv, "")
 
 	//graceful shutdown
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt)
